@@ -7,6 +7,10 @@ name = "pypi"
 fastapi = "*"
 alembic = "*"
 sqlalchemy = "*"
+uvicorn = "*"
+pyjwt = "*"
+passlib = {extras = ["bcrypt"], version = "*"}
+psycopg2 = "*"
 
 [dev-packages]
 

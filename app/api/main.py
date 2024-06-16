@@ -3,9 +3,9 @@
 
 from fastapi import APIRouter
 
-from app.api.routers import teste_router
+from app.api.routers import teste_router, user_router
 
 
 api_router = APIRouter()
 
-api_router.include_router(teste_router.router, tags=["hello world"])
+api_router.include_router(user_router.router, tags=["user"])
