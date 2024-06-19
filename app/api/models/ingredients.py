@@ -33,6 +33,12 @@ class CreateIngredientRequest(BaseModel):
     unit: str = Field(min_length=1)
     value: float = Field(gt=0)
     
+class PartialIngredientRequest(BaseModel):
+    name: Optional[str] = None
+    quantity: Optional[str] = None
+    unit: Optional[int] = None
+    value: Optional[float] = None
+    
 class IngredientResponse(BaseModel):
     id: int 
     name: str
