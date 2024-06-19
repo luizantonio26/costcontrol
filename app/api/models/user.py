@@ -11,6 +11,8 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 
+#from app.utils import partial_model
+
 #from configs.database import Base
 
 class Base(DeclarativeBase):
@@ -34,6 +36,11 @@ class RegisterUserRequest(BaseModel):
     confirm_password: str = Field(min_length=6, max_length=24)
     birthdate: datetime
 
+#@partial_model
+class UpdateUserRequest(BaseModel):
+    name: str = Field(max_length=30)
+    birthdate: datetime
+
 class RegisterUserResponse(BaseModel):
     id: int
     name: str
@@ -47,3 +54,7 @@ class RegisterUserResponse(BaseModel):
 class LoginUserRequest(BaseModel):
     email: str
     password: str
+    
+class LoginUserResponse(BaseModel):
+    user: RegisterUserResponse
+    tokens: dict
