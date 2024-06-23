@@ -1,8 +1,9 @@
 from typing import Annotated, List
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.api.models.recipes import CreateRecipeRequest, PartialUpdateRecipeRequest, Recipe, RecipeResponse
+from app.api.models.recipes import Recipe
 from app.api.models.user import User
+from app.api.schemas.recipe_schemas import CreateRecipeRequest, PartialUpdateRecipeRequest, RecipeResponse
 from app.configs.dependencies import get_db
 from sqlalchemy.orm import Session
 
@@ -26,7 +27,7 @@ def get_recipe(user: Annotated[User, Depends(get_current_user)], recipe_id:int, 
 @router.post("/", response_model=RecipeResponse)
 def create_a_recipe(user: Annotated[User, Depends(get_current_user)], recipe_request: CreateRecipeRequest, db: Session = Depends(get_db)):
     recipe: Recipe = Recipe(**recipe_request.model_dump())
-    recipe.user_id = user.id
+    recipe.user_id = user.id # type: ignore
     
     db.add(recipe)
     db.commit()

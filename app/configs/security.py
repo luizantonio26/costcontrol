@@ -25,7 +25,7 @@ def generate_tokens(email: str) -> Token:
     access_payload = {
         "sub": email,
         "iat": datetime.now(timezone.utc), # type: ignore
-        "exp": datetime.now(timezone.utc) + timedelta(minutes=15),  # Access token expira em 15 minutos # type: ignore
+        "exp": datetime.now(timezone.utc) + timedelta(days=1),  # Access token expira em 15 minutos # type: ignore
         "scope": "read write"
     }
     

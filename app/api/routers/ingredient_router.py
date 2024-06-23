@@ -4,7 +4,8 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from app.api.models.ingredients import CreateIngredientRequest, IngredientResponse, Ingredients, PartialIngredientRequest
+from app.api.models.ingredients import Ingredients
+from app.api.schemas.ingredients_schemas import CreateIngredientRequest, IngredientResponse, PartialIngredientRequest
 from app.configs.dependencies import get_db
 
 
