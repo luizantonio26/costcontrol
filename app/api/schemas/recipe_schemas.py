@@ -7,6 +7,7 @@ from app.api.schemas.recipe_ingredients_schemas import RecipeIngredientResponse
 
 class CreateRecipeRequest(BaseModel):
     name: str = Field(min_length=3, max_length=150)
+    image_url: str | None = None
     prep_time: str = Field(min_length=2, max_length=10)
     servings: int = Field(gt=0)
     
@@ -16,6 +17,7 @@ class RecipeResponse(BaseModel):
     name: str
     prep_time: str
     servings: int
+    image_url: str | None = None
     ingredients: List[RecipeIngredientResponse]
     created_at: datetime
     updated_at: datetime
@@ -42,3 +44,4 @@ class PartialUpdateRecipeRequest(BaseModel):
     name: Optional[str] = None
     prep_time: Optional[str] = None
     servings: Optional[int] = None
+    image_url: Optional[str] = None
