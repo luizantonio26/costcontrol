@@ -13,6 +13,7 @@ class UpdateRecipeSalesRequest(BaseModel):
     client_name: str
     quantity: float = Field(gt=0)
     sale_date: date
+    recipe_id: int
     
 class RecipeSalesResponse(BaseModel):
     id: int 
