@@ -11,6 +11,8 @@ uvicorn = "*"
 pyjwt = "*"
 passlib = {extras = ["bcrypt"], version = "*"}
 psycopg2 = "*"
+pyotp = "*"
+qrcode = "*"
 
 [dev-packages]
 

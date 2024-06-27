@@ -5,11 +5,13 @@ from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import DeclarativeBase
 from typing import List
 from typing import Optional
-from sqlalchemy import ForeignKey, func
+from sqlalchemy import Date, ForeignKey, func
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
+
+from app.api.models.security_settings import SecuritySettings
 
 #from app.utils import partial_model
 
@@ -24,7 +26,8 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(30))
     email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(100), nullable=False)
-    birthdate: Mapped[datetime] = mapped_column()
+    birthdate: Mapped[datetime] = mapped_column(Date)
+    security_settings: Mapped[SecuritySettings] = mapped_column(ForeignKey(SecuritySettings.id), nullable=True)
     created_at: Mapped[datetime] = mapped_column(insert_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(insert_default=func.now(), onupdate=func.now())
 
