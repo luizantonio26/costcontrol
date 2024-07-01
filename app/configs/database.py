@@ -2,7 +2,9 @@ from sqlalchemy import  create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:postgres@localhost/costcontroldb"
+from app.settings import Settings
+
+SQLALCHEMY_DATABASE_URL = Settings().DATABASE_URL # type: ignore
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL

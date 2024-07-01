@@ -1,3 +1,4 @@
+from app.api.models.recipe_sales_item import RecipeSalesItem
 from app.api.models.security_settings import SecuritySettings
 from app.api.models.user import User
 from app.api.models.ingredients import Ingredients
@@ -11,5 +12,6 @@ custom_target_metadata = [
     Ingredients.metadata,
     RecipeIngredients.metadata,
     RecipeSales.metadata,
-    SecuritySettings.metadata
+    SecuritySettings.metadata,
+    RecipeSalesItem.metadata
 ]

@@ -13,6 +13,7 @@ passlib = {extras = ["bcrypt"], version = "*"}
 psycopg2 = "*"
 pyotp = "*"
 qrcode = "*"
+pydantic-settings = "*"
 
 [dev-packages]
 
